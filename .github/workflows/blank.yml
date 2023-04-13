@@ -14,6 +14,6 @@ jobs:
       with:
         node-version: 18.x
     - name: Install npm@latest
-      run: npm install npm@latest -g
+      run: npm install npm@latest
     - name: npm Version
       run: npm -v
