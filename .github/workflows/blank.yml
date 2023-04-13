@@ -1,19 +1,13 @@
 ---
-name: Version
-on:
-  workflow_dispatch: null
-  push:
-    branches:
-      - main
+name: build
+on: push
 jobs:
-  name: Version
-  runs-on: ubuntu-latest
-  steps:
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-    - name: Install npm@latest
-      run: npm install npm@latest
-    - name: npm Version
-      run: npm -v
+  build-node:
+    runs-on: ubuntu-latest
+    container: node:16
+    steps:
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: node install
